@@ -32,7 +32,8 @@ public class Company {
     public String getName() {
         return name;
     }
-@ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
     public List<Employee> getEmployees() {
         return employees;
     }
