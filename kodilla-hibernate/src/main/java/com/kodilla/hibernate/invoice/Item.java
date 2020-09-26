@@ -1,6 +1,7 @@
 package com.kodilla.hibernate.invoice;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class Item {
     }
 @Id
 @GeneratedValue
+@NotNull
     public int getId() {
         return id;
     }
