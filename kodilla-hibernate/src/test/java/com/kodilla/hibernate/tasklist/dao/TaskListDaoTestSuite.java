@@ -35,6 +35,7 @@ public class TaskListDaoTestSuite {
         //CleanUp
         taskListDao.delete(taskList);
     }
+
     @Test
     public void testTaskListDaoSaveWithTasks() {
         //Given
@@ -52,7 +53,7 @@ public class TaskListDaoTestSuite {
         task2.setTaskList(taskList);
 
         //When
-       taskListDao.save(taskList);
+        taskListDao.save(taskList);
         int id = taskList.getId();
 
         //Then

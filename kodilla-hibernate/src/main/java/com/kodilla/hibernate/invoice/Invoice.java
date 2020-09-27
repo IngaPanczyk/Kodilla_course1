@@ -6,8 +6,8 @@ import java.util.List;
 
 @Entity
 public class Invoice {
-    int id;
-    String number;
+    private int id;
+    private String number;
     List<Item> items;
 
     public Invoice() {
@@ -40,6 +40,7 @@ public class Invoice {
     public String getNumber() {
         return number;
     }
+
     @OneToMany(targetEntity = Item.class,
             mappedBy = "invoice",
             fetch = FetchType.LAZY

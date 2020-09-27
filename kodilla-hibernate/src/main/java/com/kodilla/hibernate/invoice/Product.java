@@ -13,7 +13,6 @@ public class Product {
     //Zawiera listę faktur przypisanych do tego produktu
     private List<Item> itemList;
 
-
     public Product() {
     }
 
@@ -33,15 +32,13 @@ public class Product {
         return name;
     }
 
-
- @OneToMany(targetEntity = Item.class,
+    @OneToMany(targetEntity = Item.class,
             mappedBy = "product",
             fetch = FetchType.LAZY
     )
     public List<Item> getItemList() {
         return itemList;
     }
-
 
     public void setId(int id) {
         this.id = id;
