@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-public class Invoice {
+public final class Invoice {
     private int id;
     private String number;
     List<Item> items;

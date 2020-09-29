@@ -1,9 +1,19 @@
 package com.kodilla.hibernate.manytomany;
 
+import com.kodilla.hibernate.task.Task;
+import org.springframework.data.jpa.repository.Query;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+
+@NamedNativeQuery(
+        name = "Company.retrieveCompany",
+        query = " SELECT COMPANY_NAME,SUBSTRING(COMPANY_NAME,1,3) FROM COMPANIES  WHERE COMPANY_NAME = :NAME",
+        //query = "select COMPANY_NAME, substring (COMPANY_NAME,1, 3 ) FROM COMPANIES",
+        resultClass = Company.class
+)
 
 @Entity
 @Table(name = "COMPANIES")
