@@ -6,14 +6,9 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-/*@NamedNativeQuery(
-        name = "Employee.retrieveEmployeeWithName",
-        query = "SELECT * FROM EMPLOYEES WHERE firstname = :FIRSTNAME",
-        resultClass = Employee.class
-)*/
 @NamedQuery(
         name = "Employee.retrieveEmployeeWithName",
-        query = " FROM Employee WHERE firstname = :FIRSTNAME"
+        query = " FROM Employee WHERE FIRSTNAME = :FIRSTNAME"
 )
 
 @Transactional

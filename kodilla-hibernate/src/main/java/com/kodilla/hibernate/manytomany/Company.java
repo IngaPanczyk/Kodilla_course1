@@ -1,26 +1,25 @@
 package com.kodilla.hibernate.manytomany;
 
-import com.kodilla.hibernate.task.Task;
-import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 @NamedNativeQuery(
         name = "Company.retrieveCompany",
-        query = " SELECT COMPANY_NAME,SUBSTRING(COMPANY_NAME,1,3) FROM COMPANIES  WHERE COMPANY_NAME = :NAME",
-        //query = "select COMPANY_NAME, substring (COMPANY_NAME,1, 3 ) FROM COMPANIES",
+        query = " SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME,1,3) = :COMPANY_NAME",
         resultClass = Company.class
 )
 
+@Transactional
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
     private int id;
     private String name;
-    private List<Employee> employees = new ArrayList<>();
+    public List<Employee> employees = new ArrayList<>();
 
     public Company() {
     }
@@ -52,7 +51,7 @@ public class Company {
         this.id = id;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
