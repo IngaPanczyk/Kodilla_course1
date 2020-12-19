@@ -103,16 +103,19 @@ public class CompanyDaoTestSuite {
 
 
         //Then
+        //Problem z usuwaniem danych po testach z bazy
         Assert.assertEquals(1, employeeWithName.size());
         Assert.assertEquals(1, companies.size());
 
 
         //CleanUp
+
         try {
 
             companyDao.delete(softwareMachine);
             companyDao.delete(dataMaesters);
             companyDao.delete(greyMatter);
+
 
         } catch (Exception e) {
             //do nothing

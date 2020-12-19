@@ -5,11 +5,17 @@ import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+@NamedQueries({
+        @NamedQuery(
+                name = "Employee.retrieveEmployeeWithName",
+                query = " FROM Employee WHERE FIRSTNAME = :FIRSTNAME"
+        ),
+        @NamedQuery(
+                name = "Employee.findEmployeeByText",
+                query = " FROM Employee WHERE FIRSTNAME like '%ohn%'"
+        )
+})
 
-@NamedQuery(
-        name = "Employee.retrieveEmployeeWithName",
-        query = " FROM Employee WHERE FIRSTNAME = :FIRSTNAME"
-)
 
 @Transactional
 @Entity

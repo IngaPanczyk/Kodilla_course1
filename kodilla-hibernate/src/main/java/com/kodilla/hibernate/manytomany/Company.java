@@ -7,11 +7,21 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
-        name = "Company.retrieveCompany",
-        query = " SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME,1,3) = :COMPANY_NAME",
-        resultClass = Company.class
-)
+@NamedNativeQueries({
+
+        @NamedNativeQuery(
+                name = "Company.retrieveCompany",
+                query = " SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME,1,3) = :COMPANY_NAME",
+                resultClass = Company.class
+        ),
+        @NamedNativeQuery(
+                name = "Company.findCompanyByText",
+                query = " select * from companies where company_name like '%rrr%'",
+                resultClass = Company.class
+        )
+
+})
+
 
 @Transactional
 @Entity
