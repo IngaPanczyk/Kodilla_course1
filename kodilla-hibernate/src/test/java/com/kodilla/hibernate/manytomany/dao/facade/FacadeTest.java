@@ -52,14 +52,13 @@ public class FacadeTest {
         companyDao.save(greyMatter);
 
         //When
-        List<Company> companies = companyDao.findCompanyByText();
-        List<Employee> employees = employeeDao.findEmployeeByText();
+        List<Company> companies = companyDao.findCompanyByText("%rrr%");
+        List<Employee> employees = employeeDao.findEmployeeByText("%ohn%");
 
         //Then
         //Problem z usuwaniem danych po testach z bazy
         Assert.assertEquals(1, companies.size());
         Assert.assertEquals(1, employees.size());
-
 
         //CleanUp
 

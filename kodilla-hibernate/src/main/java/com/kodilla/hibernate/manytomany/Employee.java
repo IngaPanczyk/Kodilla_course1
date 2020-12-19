@@ -12,7 +12,8 @@ import java.util.List;
         ),
         @NamedQuery(
                 name = "Employee.findEmployeeByText",
-                query = " FROM Employee WHERE FIRSTNAME like '%ohn%'"
+                query = " FROM Employee WHERE FIRSTNAME like :TEXT"
+               // query = " FROM Employee WHERE FIRSTNAME like '%ohn%'"
         )
 })
 

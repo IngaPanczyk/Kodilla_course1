@@ -16,7 +16,7 @@ import java.util.List;
         ),
         @NamedNativeQuery(
                 name = "Company.findCompanyByText",
-                query = " select * from companies where company_name like '%rrr%'",
+                query = " select * from companies where company_name like :TEXT",
                 resultClass = Company.class
         )
 
