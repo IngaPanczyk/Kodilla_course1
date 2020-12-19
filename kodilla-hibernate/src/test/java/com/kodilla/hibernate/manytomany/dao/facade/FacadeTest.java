@@ -4,6 +4,10 @@ import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
 import com.kodilla.hibernate.manytomany.dao.CompanyDao;
 import com.kodilla.hibernate.manytomany.dao.EmployeeDao;
+import com.kodilla.hibernate.manytomany.facade.CompanyFacade;
+import com.kodilla.hibernate.manytomany.facade.CompanyProcessingException;
+import com.kodilla.hibernate.manytomany.facade.EmployeeFasade;
+import com.kodilla.hibernate.manytomany.facade.EmployeeProcessingException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +25,10 @@ public class FacadeTest {
     CompanyDao companyDao;
     @Autowired
     EmployeeDao employeeDao;
+    @Autowired
+    CompanyFacade companyFacade;
+    @Autowired
+    EmployeeFasade employeeFasade;
 
     @Test
     public void testQuery() {
@@ -30,11 +38,8 @@ public class FacadeTest {
         Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
 
         Company softwareMachine = new Company("Software Machine");
-        //softwareMachine.setName("Software Machine");
         Company dataMaesters = new Company("Data Maesters");
-        //dataMaesters.setName("Data Maesters");
-        Company greyMatter = new Company("Grey Matterrrrrs");
-        //greyMatter.setName("Grey Matter");
+        Company greyMatter = new Company("Grey Matters");
 
         softwareMachine.getEmployees().add(johnSmith);
         dataMaesters.getEmployees().add(stephanieClarckson);
@@ -52,7 +57,7 @@ public class FacadeTest {
         companyDao.save(greyMatter);
 
         //When
-        List<Company> companies = companyDao.findCompanyByText("%rrr%");
+        List<Company> companies = companyDao.findCompanyByText("%ters%");
         List<Employee> employees = employeeDao.findEmployeeByText("%ohn%");
 
         //Then
@@ -68,6 +73,33 @@ public class FacadeTest {
             companyDao.delete(greyMatter);
         } catch (Exception e) {
             //do nothing
+        }
+    }
+    @Test
+    public void testFindCompanyFacade() {
+        Employee johnSmith = new Employee("John", "Smith");
+        Company softwareMachine = new Company("Software Machine");
+        softwareMachine.getEmployees().add(johnSmith);
+        companyDao.save(softwareMachine);
+
+        try{
+        companyFacade.findCompany("%a%");
+
+        }catch (CompanyProcessingException e){
+
+        }
+    }
+    @Test
+    public void testFindEmployeeFacade() {
+        Employee johnSmith = new Employee("John", "Smith");
+        Company softwareMachine = new Company("Software Machine");
+        softwareMachine.getEmployees().add(johnSmith);
+        companyDao.save(softwareMachine);
+
+        try{
+            employeeFasade.findEmployee("%n%");
+
+        }catch (EmployeeProcessingException e){
 
         }
     }
